@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <script defer src="../js/getEmpList.js"></script>
+</head>
+
+<body>
+  <input type="checkbox" id="menu-toggle">
+  <div class="sidebar">
+    <div class="side-header">
+      <h3><span>EMS</span></h3>
+    </div>
+
+    <div class="side-menu">
+      <ul>
+        <li>
+          <a href="" class="active">
+            <span class="las la-home"></span>
+            <small>Dashboard</small>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <main>
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <small>Home / Dashboard</small>
+
+      <button type="button" id="logout" style="margin-left: 95%;" onclick="logout()">Logout</button>
+
+    </div>
+
+    <div class="add">
+      <button type="button" id="re" style="margin-right: 10px;" onclick="printData()">Refresh</button>
+      <button type="button" name="" style="margin-right: 10px;" onclick="addEmployeeHtml()">Add Emp</button>
+      <button type="button" name="" style="margin-right: 10px;" onclick="updateEmployeeHtml()">Update Emp</button>
+    </div>
+    <div>
+      <table style="table-layout:fixed" width="100%">
+        <thead width="100%">
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Department</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+
+</html>

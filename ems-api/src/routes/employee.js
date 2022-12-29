@@ -43,12 +43,15 @@ exports.getEmployeeById = (req, res) => {
 
 exports.insertEmployee = (req, res) => {
         const employees = req.body;
-        let insertQuery = `insert into employees(employee_id, name, age,phone_no, email,status,dept_id,admin_id)
-                           values(${employees.employee_id}, '${employees.name}', '${employees.age}', '${employees.phone_no}', '${employees.email}', '${employees.status}', '${employees.dept_id}', '${employees.admin_id}')`
+
+        console.log(employees);
+
+        let insertQuery = `insert into employees(employee_id, name, age,phone_no, email,status,dept_id)
+                           values(${employees.employee_id}, '${employees.name}', '${employees.age}', '${employees.phone_no}', '${employees.email}', '${employees.status}', '${employees.dept_id}')`
     
         client.query(insertQuery, (err, result)=>{
             if(!err){
-                res.send('Insertion was successful')
+                res.send({ status: true, statusCode: 200, message: `Insertion succesfull`, data: result.rows[0] })
             }
             else{ console.log(err.message) }
         })
@@ -57,16 +60,21 @@ exports.insertEmployee = (req, res) => {
 
 
 exports.updateEmployee= (req, res)=> {
+
+    console.log(req.body);
     const employees = req.body;
         let updateQuery = `update employees
                            set name = '${employees.name}',
                            age = '${employees.age}',
-                           email = '${employees.email}'
-                           where employee_id = ${employees.employee_id}`
+                           email = '${employees.email}',
+                           phone_no= '${employees.phone_no}',
+                           status = '${employees.status}',
+                           dept_id = '${employees.dept_id}'
+                           where employee_id = '${employees.employee_id}'`
     
         client.query(updateQuery, (err, result)=>{
             if(!err){
-                res.send('Update was successful')
+                res.send({ status: true, statusCode: 200, message: `Update succesfull`, data: result.rows[0] })
             }
             else{ console.log(err.message) }
         })
@@ -79,7 +87,7 @@ exports.updateEmployee= (req, res)=> {
     
         client.query(insertQuery, (err, result)=>{
             if(!err){
-                res.send('Deletion was successful')
+                res.send({ status: true, statusCode: 200, message: `Deletion succesfull`, data: result.rows[0] })
             }
             else{ console.log(err.message) }
         })

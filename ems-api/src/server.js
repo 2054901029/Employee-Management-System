@@ -11,6 +11,7 @@ app.use(cors({
 //Routes Imports
 const employee = require('./routes/employee');
 const department = require('./routes/department');
+const admin = require('./routes/admin');
 
 
 // Running the Server 
@@ -26,22 +27,22 @@ client.connect().then(() => {
     server.close();
 });
 
-// Routes
-app.get('/employee/list', employee.getEmployeeList);
-app.get('/employee/:id', employee.getEmployeeById);
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
+// Routes
+app.get('/employee/list', employee.getEmployeeList);
+app.get('/employee/:id', employee.getEmployeeById);
 app.post('/employee/insert', employee.insertEmployee);
 app.put('/employee/:id', employee.updateEmployee);
 app.delete('/employee/:id', employee.deleteEmployee);
-
-
 
 app.get('/department/list', department.getDepartmentList);
 app.get('/department/:id', department.getDepartmentById);
 app.post('/department/insert', department.insertDepartment);
 app.put('/department/:id', department.updateDepartment);
 app.delete('/department/:id', department.deleteDepartment);
+
+app.post('/admin/login', admin.authorizeEmployee);
 
